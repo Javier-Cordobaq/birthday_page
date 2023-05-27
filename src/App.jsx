@@ -18,6 +18,7 @@ function App() {
         </div>
         <div className='content'>
           <Routes>
+            <Route path="/birthday_page" element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/shopping-bag" element={<ShoppingBag />} />
             <Route path="/product-detail/:id" element={<ProductDetail />} />
