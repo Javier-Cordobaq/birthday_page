@@ -13,6 +13,37 @@ const ProductContainer = styled.div`
 
     width: 100%;
     position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+
+    .pulse {
+        position: absolute;
+        right: -6px;
+        top: -6px;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        padding: 8px;
+        background-color: ${PinkPalete.C300};
+        opacity: 0;
+        animation: ${props => props.selected ? 'none' : 'backgroundPulse 2s linear infinite'};
+        z-index: 4;
+    }
+
+    @keyframes backgroundPulse {
+        0% {
+            opacity: 0;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.6;
+            transform: scale(1.2);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
 
     .bag_icon {
         position: absolute;
@@ -24,25 +55,13 @@ const ProductContainer = styled.div`
         border-radius: 50%;
         padding: 8px;
         transition: 0.2s;
-        animation: pulse 2s ease-in-out infinite;
-
-        @keyframes pulse {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.1);
-        }
-        100% {
-            transform: scale(1);
-        }
-        }
+        z-index: 10;
     }
 
     img {
         max-width: 100%;
-        border-radius: 1rem;
-        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        border-radius: 1.3rem;
+        min-height: 15rem;
     }
 
 `
@@ -68,7 +87,9 @@ const ProductContainerNoStock = styled.div`
 
     img {
         max-width: 100%;
-        border-radius: 1rem;
+        border-radius: 1.3rem;
+        min-height: 15rem;
+        background-color: ${PinkPalete.C400};
     }
 
 `
@@ -97,6 +118,7 @@ const HomePage = () => {
 
                 <ProductContainer selected={shoppingBag.length !== 0 ? true : false} key={BirthdayHoddie.id}>
                     <TbShoppingBag onClick={() => addShoppingBag()} className='bag_icon' />
+                    <div className='pulse'></div>
                     <Link to={`/product-detail/${BirthdayHoddie.id}`}>
                         <img src={BirthdayHoddie.img} alt={BirthdayHoddie.name} loading='lazy' />
                     </Link>

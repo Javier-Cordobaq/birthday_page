@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
 import { MyContext } from '../../context/ClothesContext'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { ProductDetailLayout } from './styled-components/product-detail-layout.styled';
 import styled from 'styled-components';
 import { WhitePaleteColors } from '../../palete-colors/palete-colors.colors';
+import { BiArrowBack } from 'react-icons/bi'
+import { TbShoppingBag } from 'react-icons/tb'
 
 const TallaButton = styled.span`
 
@@ -23,20 +25,25 @@ const ProductDetail = () => {
 
     const { id } = useParams();
 
-    const { BirthdayHoddie } = useContext(MyContext)
+    const { BirthdayHoddie, shoppingBag, addShoppingBag } = useContext(MyContext)
 
     const [talla, setTalla] = useState('M')
     const tallas = ['S', 'M', 'L', 'XL', 'XXL']
 
-    const { addShoppingBag } = useContext(MyContext)
-
     return (
-        <ProductDetailLayout>
-            <h2>Details Product</h2>
+        <ProductDetailLayout selected={shoppingBag.length !== 0 ? true : false}>
+            <div className='detail_nav'>
+                <Link to='/'>
+                    <BiArrowBack className='back_icon' />
+                </Link>
+                <h2>Details Product</h2>
+                <BiArrowBack className='back_icon' style={{ visibility: 'hidden' }} />
+            </div>
             <div className='images_container'>
                 <img src={BirthdayHoddie?.back} alt={BirthdayHoddie?.name} />
                 <img src={BirthdayHoddie?.imagen_apoyo_1} alt={BirthdayHoddie?.name} />
                 <img src={BirthdayHoddie?.imagen_apoyo_2} alt={BirthdayHoddie?.name} />
+                <TbShoppingBag onClick={() => addShoppingBag()} className='bag_icon' />
             </div>
             <div className='product_info'>
                 <div>
@@ -57,7 +64,9 @@ const ProductDetail = () => {
                     ))
                 }
             </div>
-            <p>Por el momento solo tenemos esta talla</p>
+            <div className='unica_talla'>
+                <p>Por el momento solo tenemos esta talla</p>
+            </div>
             <button type='button' onClick={() => addShoppingBag()}>Añadir a la bolsa</button>
         </ProductDetailLayout>
     )

@@ -24,7 +24,8 @@ const MyContextProvider = ({ children }) => {
     back: BusoAtras,
     imagen_apoyo_1: Cats,
     imagen_apoyo_2: CatLover,
-    description: '¡El regalo perfecto! Nuestro hoddie combina estilo y comodidad en una prenda. Con materiales de alta calidad y un ajuste perfecto, es versátil y funcional. Disponible en diferentes tallas y colores. Un obsequio moderno y casual que resalta la personalidad de quien lo lleva. Ideal para relajarse en casa o salir con amigos. Sorprende a esa persona especial con un regalo que no tiene precio. Un hoddie de alta calidad que brinda estilo y confort. ¡No esperes más para hacer su día aún más especial!',
+    talla: 'M',
+    description: 'El buso perfecto para la mujer más hermosa, inteligente y capaz del mundo, diseñado especialmente para ti, aprovechando que no fue un tatuaje, pensé en dejar este diseño en un buso con el cual puedas presumir a tus hermosos gatos, el diseño desde un principio lo hice con mucho cariño y me encanto, por lo cual espero en este buso que con mucho cariño te hice, puedas presumir mucho que tienes unos gatos hermosos y un novio que dibuja tus gatos aun más hermosos, feliz cumpleaños!, Ahora de aquí ve porfa al icono de bolsito para completar la compra mi cielo.',
   }
 
   const [products, setProducts] = useState([

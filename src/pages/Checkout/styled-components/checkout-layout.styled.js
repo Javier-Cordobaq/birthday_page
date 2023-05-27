@@ -9,6 +9,43 @@ export const CheckoutLayout = styled.div`
     text-align: center;
     position: relative;
 
+    .confirm_toast {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 7rem;
+        width: 100%;
+        img {
+            width: 30%;
+        }
+        .icon {
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            font-size: 2rem;
+            color: ${PinkPalete.C500};
+        }
+        p {
+            width: 70%;
+            font-size: 1.1rem;
+        }
+    }
+
+    a {
+        color: ${WhitePaleteColors.C800};
+    }
+
+    .nav_check {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .back_icon {
+            font-size: 1.5rem;
+        }
+    }
+
     .direcciones {
         width: 100%;
         text-align: left;
@@ -72,19 +109,37 @@ export const CheckoutLayout = styled.div`
         gap: 1rem;
         align-items: left;
         justify-content: left;
-        padding: 1rem;
         border-radius: 1rem;
         background-color: ${WhitePaleteColors.C50};
         margin-bottom: 1rem;
         width: 100%;
         text-align: left;
         box-sizing: border-box;
+   }
+
+   .product_cont {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 0.5rem 0;
+        text-align: left;
         img {
-            width: 100%;
-            border-radius: 1rem;
+            display: grid;
+            place-items: center;
+            object-fit: cover;
+            aspect-ratio: 1/2;
+            width: 4rem;
+            height: 4rem;
             background-color: ${PinkPalete.C200};
+            border-radius: 1rem;
             box-sizing: border-box;
-            padding: 0.9rem;
+        }
+        p {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: ${WhitePaleteColors.C400};
         }
    }
 

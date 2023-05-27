@@ -10,7 +10,7 @@ export const HomePageLayout = styled.div`
     .island {
         display: flex;
         background-color: ${PinkPalete.C300};
-        border-radius: 1rem;
+        border-radius: 1.3rem;
         position: relative;
         overflow: hidden;
         padding:  1rem 6rem 1rem 1rem;
@@ -59,8 +59,16 @@ export const HomePageLayout = styled.div`
 
     .product_container {
         display: grid;
-        gap: 1rem;
+        column-gap: 0.8rem;
+        row-gap: 0.8rem;
         grid-template-columns: repeat(2, 1fr);
+        h3 {
+            font-weight: 400;
+        }
+        p {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
     }
 
     a {

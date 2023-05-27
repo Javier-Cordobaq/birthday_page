@@ -7,6 +7,11 @@ import { FaKissBeam } from 'react-icons/fa'
 import styled from 'styled-components'
 import { PinkPalete } from '../../palete-colors/palete-colors.colors'
 import { MyContext } from '../../context/ClothesContext'
+import { BiArrowBack } from 'react-icons/bi'
+import { Link } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast';
+import { IoIosCloseCircleOutline } from 'react-icons/io'
+import Order from '../../assets/order.svg'
 
 const Check = styled.div`
 
@@ -36,15 +41,40 @@ const Check = styled.div`
 const Checkout = () => {
 
   const [check, setCheck] = useState('kiss')
-  const { BirthdayHoddie } = useContext(MyContext)
+  const { BirthdayHoddie, addShoppingBag } = useContext(MyContext)
+  const notify = () => {
+    toast((t) => (
+      <span className='confirm_toast'>
+        <img src={Order} alt='' />
+        <p>En unos minutos le haremos llegar su pedido, gracias por confiar en nosotros</p>
+        <Link to='/'>
+          <IoIosCloseCircleOutline className='icon' onClick={() => {
+            toast.dismiss(t.id)
+            addShoppingBag()
+          }} />
+        </Link>
+      </span>
+    ), { duration: Infinity });
+  }
 
   return (
     <CheckoutLayout>
-      <h2>Checkout</h2>
+      <div className='nav_check'>
+        <Link to='/'>
+          <BiArrowBack className='back_icon' />
+        </Link>
+        <h2>Checkout</h2>
+        <BiArrowBack className='back_icon' style={{ visibility: 'hidden' }} />
+      </div>
       <div className='product'>
-      <h3>Productos</h3>
-        <img src={BirthdayHoddie.img} alt='Birthday Hoddie' />
-          <h3>{BirthdayHoddie.name}</h3>
+        <h3>Productos</h3>
+        <div className='product_cont'>
+          <img src={BirthdayHoddie.img} alt='Birthday Hoddie' />
+          <div>
+            <h3>{BirthdayHoddie.name}</h3>
+            <p>{BirthdayHoddie.price}</p>
+          </div>
+        </div>
       </div>
       <div className='direcciones'>
         <h3>Direccione de entrega</h3>
@@ -90,7 +120,9 @@ const Checkout = () => {
           </div>
         </div>
 
-        <button type='button'>Completar Orden</button>
+        <button onClick={notify} type='button'>Comprar</button>
+
+        <Toaster position='top-center' />
       </div>
     </CheckoutLayout>
   )
